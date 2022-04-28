@@ -15,8 +15,8 @@ class Tower_Of_Hanoi:
 		# Keep track of the top of each rod
 		self.rod_state = {
 			'A' : 0,
-			'B' : max_disks-1,
-			'C' : max_disks-1,
+			'B' : max_disks,
+			'C' : max_disks,
 		}
 
 	def move_disk(self,f,t) :
@@ -25,8 +25,28 @@ class Tower_Of_Hanoi:
 		self.rod_data[f][self.rod_state[f]] = 0
 		self.rod_state[f] += 1
 
-		self.rod_data[t][self.rod_state[t]] = disk
+		self.rod_data[t][self.rod_state[t]-1] = disk
 		self.rod_state[t] -= 1
+
+	def valid_move(self,move):
+		'''Check for a valid move'''
+		if move in ('AB','AC','BA','BC','CA','CB') :
+			f = move[0]
+			t = move[1]
+
+			F = self.rod_data[f]
+			T = self.rod_data[t]
+			a = self.rod_state[f]
+			b = self.rod_state[t]
+
+			# Rod f must not be empty and Rod t must not be full
+			if a <= 4 and b >= 0 :
+				# Disk in F should be smaller than Disk in T
+				#if T[b] == 0 or F[a] < T[b+1]:
+				return True
+		return False
+
+
 
 	def print_disk(self,N) :
 		'''Print Indiviual Disks based on their length'''
@@ -50,7 +70,31 @@ class Tower_Of_Hanoi:
 
 		for a,b,c in zip(rodA,rodB,rodC) :
 			print(f"{self.print_disk(a)} {self.print_disk(b)} {self.print_disk(c)}")
+		print(f"{' '*self.max_disks}A {' '*self.max_disks} ",end='')
+		print(f"{' '*self.max_disks}B {' '*self.max_disks} ",end='')
+		print(f"{' '*self.max_disks}C {' '*self.max_disks} ")
 
 
 
+	def run(self) :
+		print(f"TOWER OF HANOI by Shakeeb Arsalan arsshakeeb149@protonmail.com")
 
+		while True :
+			self.draw_tower()
+			print(self.rod_data)
+			print(self.rod_state)
+
+			print("To Move a Disk from one Rod1 to Rod2, enter <Rod1><Rod2> or Q to quit.")
+			print("e.g. To Move Disk from A to B, enter AB")
+        	
+			cmd = input('>').upper().strip()
+
+			if cmd == 'Q':
+				break
+
+
+			if self.valid_move(cmd) :
+				self.move_disk(cmd[0],cmd[1])
+
+			else:
+				print("Invalid Move or Command!")
