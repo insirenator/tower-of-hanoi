@@ -42,8 +42,8 @@ class Tower_Of_Hanoi:
 			# Rod f must not be empty and Rod t must not be full
 			if a <= 4 and b >= 0 :
 				# Disk in F should be smaller than Disk in T
-				#if T[b] == 0 or F[a] < T[b+1]:
-				return True
+				if b == 5 or F[a] < T[b]:
+					return True
 		return False
 
 
