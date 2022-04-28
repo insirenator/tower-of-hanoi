@@ -40,9 +40,9 @@ class Tower_Of_Hanoi:
 			b = self.rod_state[t]
 
 			# Rod f must not be empty and Rod t must not be full
-			if a <= 4 and b >= 0 :
+			if a <= self.max_disks-1 and b >= 0 :
 				# Disk in F should be smaller than Disk in T
-				if b == 5 or F[a] < T[b]:
+				if b == self.max_disks or F[a] < T[b]:
 					return True
 		return False
 
@@ -81,8 +81,6 @@ class Tower_Of_Hanoi:
 
 		while True :
 			self.draw_tower()
-			print(self.rod_data)
-			print(self.rod_state)
 
 			print("To Move a Disk from one Rod1 to Rod2, enter <Rod1><Rod2> or Q to quit.")
 			print("e.g. To Move Disk from A to B, enter AB")
