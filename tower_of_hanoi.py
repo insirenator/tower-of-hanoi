@@ -1,14 +1,18 @@
 class Tower_Of_Hanoi:
+	'''Implementation of Tower Of Hanoi'''
 	def __init__(self,max_disks=5) :
 		
+		# Max disks
 		self.max_disks = max_disks
 		
+		# Disks in each rod
 		self.rod_data = {
 			'A' : [i+1 for i in range(max_disks)],
 			'B' : [0 for i in range(max_disks)],
 			'C' : [0 for i in range(max_disks)],
 		}
 
+		# Keep track of the top of each rod
 		self.rod_state = {
 			'A' : 0,
 			'B' : max_disks-1,
@@ -25,6 +29,7 @@ class Tower_Of_Hanoi:
 		self.rod_state[t] -= 1
 
 	def print_disk(self,N) :
+		'''Print Indiviual Disks based on their length'''
 		if N == 0 :
 			ch = '||'
 		else :
