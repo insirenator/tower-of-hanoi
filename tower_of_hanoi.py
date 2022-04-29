@@ -106,6 +106,15 @@ class Tower_Of_Hanoi:
 			if self.valid_move(cmd) :
 				self.move_disk(cmd[0],cmd[1])
 
+				# Check for win condition
+				if self.rod_state['C'] == 0 :
+					print("\nTOWER COMPLETED, YOU WIN!!")
+
+					# Draw the completed tower
+					print()
+					self.draw_tower()
+					break # End Game
+
 			else:
 				print("!!INVALID MOVE OR COMMAND!!")
 
