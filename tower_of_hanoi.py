@@ -1,22 +1,27 @@
 class Tower_Of_Hanoi:
-	'''Implementation of Tower Of Hanoi'''
+	'''Implementation of Tower Of Hanoi
+		Maximum tower height - 20'''
 	def __init__(self,max_disks=5) :
 		
-		# Max disks
+		# Tower height restriction
 		self.max_disks = max_disks
-		
+
+		if self.max_disks <= 0 or self.max_disks > 20 :
+			self.max_disks = 5
+
+
 		# Disks in each rod
 		self.rod_data = {
-			'A' : [i+1 for i in range(max_disks)],
-			'B' : [0 for i in range(max_disks)],
-			'C' : [0 for i in range(max_disks)],
+			'A' : [i+1 for i in range(self.max_disks)],
+			'B' : [0 for i in range(self.max_disks)],
+			'C' : [0 for i in range(self.max_disks)],
 		}
 
 		# Keep track of the top of each rod
 		self.rod_state = {
 			'A' : 0,
-			'B' : max_disks,
-			'C' : max_disks,
+			'B' : self.max_disks,
+			'C' : self.max_disks,
 		}
 
 	def move_disk(self,f,t) :
