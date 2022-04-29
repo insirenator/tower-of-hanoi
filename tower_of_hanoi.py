@@ -77,11 +77,15 @@ class Tower_Of_Hanoi:
 
 
 	def run(self) :
-		print(f"TOWER OF HANOI by Shakeeb Arsalan arsshakeeb149@protonmail.com")
+		print(f"TOWER OF HANOI by Shakeeb Arsalan : arsshakeeb149@protonmail.com")
+		print(f"\nMove all the disks in Rod A to Rod C using Rod B. You can only move")
+		print(f"one disk at a time, cannot place a bigger disk on a smaller one and ")
+		print(f"in the end all the disks in Rod C must be in the same order as they ")
+		print(f"were in Rod A.")
 
 		while True :
+			print()
 			self.draw_tower()
-
 			print("To Move a Disk from one Rod1 to Rod2, enter <Rod1><Rod2> or Q to quit.")
 			print("e.g. To Move Disk from A to B, enter AB")
         	
@@ -96,3 +100,5 @@ class Tower_Of_Hanoi:
 
 			else:
 				print("Invalid Move or Command!")
+
+			print('-'*70)
