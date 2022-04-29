@@ -52,6 +52,9 @@ class Tower_Of_Hanoi:
 		'''Print Indiviual Disks based on their length'''
 		if N == 0 :
 			ch = '||'
+		elif N >= 10 :
+			ch = f"{N}"
+
 		else :
 			ch = f"|{N}"
 
@@ -99,6 +102,6 @@ class Tower_Of_Hanoi:
 				self.move_disk(cmd[0],cmd[1])
 
 			else:
-				print("Invalid Move or Command!")
+				print("!!INVALID MOVE OR COMMAND!!")
 
 			print('-'*70)
